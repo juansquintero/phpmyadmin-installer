@@ -104,29 +104,11 @@ if [ $? -ne 0 ]; then echo "egrep not found, can't continue."; exit 1; fi
 
 ############### APT BLOCK ###############
 
-echo "Distribution: $(lsb_release -sd) ($(lsb_release -sc))"
-case $(lsb_release -sc) in
-    buster)
-        PACKAGES="unzip apache2 libapache2-mod-php php php-mysqli php-pear php-zip \
-            php-bz2 php-mbstring php-xml php-php-gettext php-phpseclib php-curl php-gd"
-        ;;
-    stretch|buster|bionic|disco)
+
+
         PACKAGES="unzip apache2 libapache2-mod-php php php-mysqli php-pear php-zip \
             php-bz2 php-tcpdf php-mbstring php-xml php-php-gettext php-phpseclib php-curl php-gd"
-        ;;
-    xenial)
-        PACKAGES="unzip apache2 libapache2-mod-php php php-mysqli php-pear php-zip \
-            php-bz2 php-tcpdf php-mbstring php-mcrypt php-xml php-gettext php-phpseclib php-curl php-gd"
-        ;;
-    jessie|trusty)
-        PACKAGES="unzip apache2 libapache2-mod-php5 php5 php5-mysql php-tcpdf php-gettext php-seclib php5-curl php5-gd"
-        ;;
-    *)
-        echo "Your distribution is not yet supported - perhaps it's just not listed yet."
-        echo "Contributions welcome: https://github.com/direc85/phpmyadmin-installer"
-        exit 1
-        ;;
-esac
+       
 
 if [ $(apt list --installed 2>/dev/null | grep phpmyadmin | wc -l) -eq 1 ]; then
     echo "Purging phpmyadmin package..."
