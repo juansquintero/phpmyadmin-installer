@@ -106,7 +106,7 @@ if [ $? -ne 0 ]; then echo "egrep not found, can't continue."; exit 1; fi
 
 
 
-        PACKAGES="unzip apache2 libapache2-mod-php php php-mysqli php-pear php-zip \
+        PACKAGES="unzip apache2 libapache2-mod-php php php-pear php-zip \
             php-bz2 php-tcpdf php-mbstring php-xml php-php-gettext php-phpseclib php-curl php-gd"
        
 
